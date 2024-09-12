@@ -1,6 +1,8 @@
 from Data import getData #自製的用yfinance抓取資料
 from Data import getDataFinMind #自製的用finmind抓取資料
 from BackTest import ChartCandle #自製的mplfinance做蠟燭圖
+from BackTest import ChartTrade #自製Trade圖
+from BackTest import Performance
 import pandas as pd 
 
 
@@ -46,13 +48,17 @@ for i in range(data.shape[0]-1):
             position = 0
             cover_time=n_time
             cover_price=n_open
-            profit= cover_price - order_price
             #print(c_time, '觸發出場訊號 隔日出場', cover_time, '出場價', cover_price, '獲利', dif)
             #交易紀錄
-            trade=pd.concat([trade, pd.DataFrame([[prod, 'Buy', order_time, order_price, cover_time, cover_price, order_unit, profit]])], ignore_index=True)
+            trade=pd.concat([trade, pd.DataFrame([[prod, 'Buy', order_time, order_price, cover_time, cover_price, order_unit]])], ignore_index=True)
 
 #顯示交易紀錄
-columns = ['product', 'action', 'buy_Date', 'buy_Price', 'sell_Date', 'sell_Price', 'Unit', 'profit']
-trade.columns= columns
-print(trade)
-print("總獲利", trade.profit.sum())
+
+# print(trade)
+# print(data.head())
+
+#繪製K線圖與交易明細
+ChartTrade(data, trade)
+
+#績效分析
+Performance(trade, 'ETF')
