@@ -40,10 +40,10 @@ def ChartTrade(data, trade=pd.DataFrame(), addp=[], v_enable=True):
                         ,type='scatter', color='#16982B'
                         ,marker='v', markersize=50))
 
-        #繪製圖表
-        mcolor=mpf.make_marketcolors(up='r', down='g', inherit=True)
-        mstyle=mpf.make_mpf_style(base_mpf_style='yahoo', marketcolors=mcolor)
-        mpf.plot(data1, addplot=addp, style=mstyle, type='candle',volume=v_enable)
+    #繪製圖表
+    mcolor=mpf.make_marketcolors(up='r', down='g', inherit=True)
+    mstyle=mpf.make_mpf_style(base_mpf_style='yahoo', marketcolors=mcolor)
+    mpf.plot(data1, addplot=addp, style=mstyle, type='candle',volume=v_enable)
 
 #計算交易績效指標
 def Performance(trade=pd.DataFrame(), prodtype='ETF'):
@@ -145,7 +145,7 @@ def Performance(trade=pd.DataFrame(), prodtype='ETF'):
     ax.plot(trade1['dd'], '-', color='#00A600', label='MDD')
     ax.plot(trade1['new_high'], 'o', color='#FF0000', label='Equity high')
     ax.legend()
-    plt.show()
+    plt.show(block=False)
 
 
 
