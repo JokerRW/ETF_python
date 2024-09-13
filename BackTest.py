@@ -118,14 +118,15 @@ def Performance(trade=pd.DataFrame(), prodtype='ETF'):
     print('虧損平均持有天數 %s 天' %(loss_onopen_day.days))
 
     # 12. 最大連續虧損:代表連續虧損的最大幅度
-    tmp_accloss = 0
-    max_accloss = 0
+    tmp_accloss = 1
+    max_accloss = 1
     for ret in trade1['ret'].values:
-        if ret <= 0:
+        if ret < 0:
             tmp_accloss *= ret
             max_accloss = min(max_accloss, tmp_accloss)
         else:
-            tmp_accloss = 0
+            tmp_accloss = 1
+    print('最大連續虧損', round(max_accloss, 4))
 
     # 優先計算累計報酬率 並將累計報酬率的初始值改為1 繪圖比較容易閱讀
     trade1['acc_ret'] = (1 + trade1['ret']).cumprod()
