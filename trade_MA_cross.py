@@ -1,5 +1,4 @@
 from Data import getData # 自製的用yfinance抓取資料
-from Data import getDataFinMind # 自製的用finmind抓取資料
 from BackTest import ChartCandle, ChartTrade, Performance # 自製Trade圖
 import pandas as pd
 import mplfinance as mpf
@@ -7,7 +6,7 @@ from talib.abstract import EMA
 
 # 抓取00878 回測資料
 prod='0050'
-data = getData(prod, '2022-01-01', '2024-09-01')
+data = getData(prod, '2013-01-01', '2022-05-01')
 
 # 計算指數移動平均線
 data['ema'] = EMA(data, timeperiod=120)

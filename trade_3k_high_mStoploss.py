@@ -1,5 +1,4 @@
 from Data import getData # 自製的用yfinance抓取資料
-from Data import getDataFinMind # 自製的用finmind抓取資料
 from BackTest import ChartCandle, ChartTrade, Performance # 自製Trade圖
 import pandas as pd
 import mplfinance as mpf 

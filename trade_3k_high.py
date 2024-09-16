@@ -1,5 +1,4 @@
 from Data import getData # 自製的用yfinance抓取資料
-from Data import getDataFinMind # 自製的用finmind抓取資料
 from BackTest import ChartCandle, ChartTrade, Performance # 自製Trade圖
 import pandas as pd
 import mplfinance as mpf 
@@ -41,7 +40,6 @@ for i in range(data.shape[0]-1):
             order_time = n_time
             order_price = n_open
             order_unit = 1
-            stoploss = order_price*(1-movestoploss)
             print(c_time, '觸發進場訊號 隔日進場', order_time, '進場價', order_price, '進場', order_unit, '單位')
 
     # 出場程序
